@@ -1,0 +1,51 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.interface h3{
+	margin: 0;
+    font-size: 1.5em;
+    color: #4d5e73;
+    padding: 25px 30px 15px 30px;
+}
+.interface .username{
+	display: block;
+    width: 100%;
+    padding: 12px 0;
+    border: 1px solid #d5dce5;
+    margin-bottom: 20px;
+    font-weight: normal;
+    text-indent: 23px;
+    outline: 0;
+    font-size: 1.25em;
+    border-radius: 3px;
+}
+.interface .password{
+	background: #fff;
+    display: block;
+    width: 100%;
+    padding: 12px 0;
+    border: 1px solid #d5dce5;
+    margin-bottom: 20px;
+    font-weight: normal;
+    text-indent: 23px;
+    outline: 0;
+    font-size: 1.25em;
+    border-radius: 3px
+}
+.interface .logging{
+	background: #c90a16;
+    display: block;
+    height: 44px;
+    line-height: 44px;
+    color: #fff;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.5em;
+    text-decoration: none;
+    clear: both;
+    width: 100%;
+    border: solid 1px #c90000;
+    border-radius: 3px;
+    box-shadow: 0 0 3px #fff inset;
+}

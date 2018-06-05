@@ -1,0 +1,64 @@
+html,body,div,ul,li{
+	margin:0;
+	padding: 0;
+}
+a{
+	text-decoration: none;
+}
+ul{
+	list-style: none;
+}
+.clearfix:after{
+    content: "";
+    height: 0;
+    display: block;
+    clear: both;
+}
+.top-csdn-details{
+    font-family: 'PingFang SC','Microsoft YaHei',SimHei,Arial,SimSun;
+    color: #333;
+    line-height: 18px;
+    background: #fff;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.05);
+    padding: 14px 16px;
+    width: 100%;
+}
+#csdn .top-csdn-details ul li{
+    padding-right: 22.3%;
+    float:left;
+}
+.top-tab{
+	display: block;
+	background-color: #f2f2f2;
+	height: 3rem;
+	line-height: 3rem;
+}
+.top-tab ul li{
+	float: left;
+	margin-right: 1.45rem;
+	font-size: 1rem;
+}
+#csdn ul.feedlist_mod li{
+	border-top: 1px solid #d8d8d8;
+	padding: 1rem 3rem 1rem 1rem;
+}
+#csdn ul.feedlist_mod li h3{
+	color: black;
+}
+#csdn ul.feedlist_mod li span{
+	color: #4f4f4f;
+}
+#csdn ul.feedlist_mod li .blue{
+	color: #349edf;
+}
+#csdn ul.feedlist_mod li .black{
+	color: black;
+}
+#csdn ul.feedlist_mod li .white{
+	color: #999;
+}
+.swiper-slide img{
+	display: block;
+    width: 100%;
+    height: auto; 
+}

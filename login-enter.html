@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>注册</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.14/dist/vue.js"></script>
+        <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+</head>
+<body>
+	<div id="login">
+		<input type="text" v-model="username" name="username"><br/>
+		<input type="password" v-model="password" name="password">
+		<button @click="login">登录</button>
+	</div>
+	<script type="text/javascript">
+		var login = new Vue({
+			el: "#login",
+			data: {
+				username:"",
+				password:"",
+			},
+			mounted:function(){},
+			methods:{
+				login:function(){
+					if(this.username == ""){
+						alert("用户名不能为空");
+						return false;
+					};
+
+					if(this.password == ""){
+						alert("密码不能为空");
+						return false;
+					};
+					$.ajax({
+						url: "http://blog.com/api/user/doLogin",
+						type: "post",
+						dataType: "json",
+						data: {
+							"phone":this.username,
+							"password":this.password,
+						},
+						success:function(res){
+							if(res.error_code == 0){
+								alert("登录成功了")
+							}else {
+								alert(res.message);
+							}
+						}
+					})
+				}
+			}
+		})
+	</script>
+</body>
+</html>

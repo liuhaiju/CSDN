@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>CSDN-详情</title>
+	<link rel="stylesheet" href="./css/csdn-details.css">
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.14/dist/vue.js"></script>
+</head>
+<body>
+	<div id="csdn-details">
+		<div class="top-csdn-details">
+			<ul class="clearfix">
+				<li class="floatL"><</li>
+				<li class="floatL">CSDN博客</li>
+				<li class="floatL"><a href="csdn-enter.html">登陆</a></li>
+			</ul>
+		</div>
+		<div class="top-user-mod clearfix">
+			<div class="logo floatL clearfix">
+				<a href="">
+					<img src="./image/3_csdnsevenn.jpg" alt="" class="floatL clearfix">
+					<span class="name">刘海东</span>
+				</a>
+			</div>
+			<div class="click floatR clearfix"><a href="">关注</a></div>
+		</div>
+		<div class="title top-user-mod">
+			<h2>{{blog_info.title}}</h2>
+			<p>
+				<span>转载</span>
+				<span>{{blog_info.date}}</span>
+				<span>阅读{{blog_info.read_num}}</span>
+			</p>
+		</div>
+		<div class="content top-user-mod">
+			<h1>{{blog_info.title}}</h1>
+			<p>{{blog_info.content}}</p>
+		</div>
+		<button class="btn" @click="check">收藏</button>
+	</div>
+	<script type="text/javascript" src="./js/csdn-details.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<!-- <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"> -->
+	<title>CSDN-发布文章</title>
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.14/dist/vue.js"></script>
+	<script type="text/javascript" charset="utf-8" src="./utf8-php/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="./utf8-php/ueditor.all.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="./utf8-php/lang/zh-cn/zh-cn.js"></script>
+</head>
+<body>
+	<div id="publish">
+		<h3>标题</h3>
+		<input type="text" v-model="title">
+		<script id="container" name="content" type="text/plain"></script>
+		<select v-model="classify_id">
+				<option value="5">日记</option>
+				<option value="4">it</option>
+		</select>
+		<button @click="check">发布</button>
+	</div>
+	<script src="./js/csdn-publish.js"></script>
+</body>
+</html>

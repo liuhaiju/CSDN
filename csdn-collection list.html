@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>CSDN-收藏列表</title>
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.14/dist/vue.js"></script>
+</head>
+<body>
+	<div id="collection">收藏
+		<ul>
+			<li v-for="item in blog_lists">
+				<h4>{{item.title}}</h4>
+				<p>日期{{item.date}}</p>
+				<p>{{item.read_num}}阅读</p>
+				<p>作者{{item.author_name}}</p>
+				<p>类型{{item.classify_name}}</p>
+			</li>
+		</ul>
+	</div>
+	<script src="./js/csdn-collection list.js"></script>
+</body>
+</html>

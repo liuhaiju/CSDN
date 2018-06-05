@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>修改文章</title>
+	<meta name="viewport" content="width=device-width, user-scalable=1.0, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.14/dist/vue.js"></script>
+	<script type="text/javascript" src="./utf8-php/ueditor.config.js"></script>
+	<script type="text/javascript" src="./utf8-php/ueditor.all.min.js"></script>
+	<script type="text/javascript" src="./utf8-php/lang/zh-cn/zh-cn.js"></script>
+	<!-- <link rel="stylesheet" type="text/css" href="./css/user.css"> -->
+	<style type="text/css">
+		.title {
+			width: 95%;
+			border-radius: 3px;
+			border: 1px solid #777;
+			margin-left: 5px;
+		}
+	</style>
+</head>
+<body>
+	<div class="header">
+		修改文章
+	</div>
+	<div id="main">
+		<p>标题:<input v-model="title" type="text" name="title" class="title"></p>
+		<script id="container" name="content" type="text/plain">
+        {{ updateList.content}}
+        </script>
+		<p>
+			<select v-model="class_id">
+                <option v-for="item in classList">{{ item.classify_name }}</option>
+				<option :value="updateList.classify_id" selected="selected"></option>
+			</select>
+		</p>
+		<button @click="edit()">发布</button>
+	</div>
+    <script>
+    	var editor = new Vue({
+    		el: "#main",
+    		data: {
+    			title: "",
+    			class_id: "",
+    			classList: [],
+                updateList: {
+                }
+    		},
+    		mounted: function(){
+    			var ue = UE.getEditor('container');
+    			this.getType();
+                this.updateBlog();
+    		},
+    		methods: {
+    			getUeditorContent: function(){
+    				return UE.getEditor('container').getContent()
+    			},
+                getQuery: function(){
+                    var str = (location.search.length > 0 ? location.search.substring(1) : ''),
+                    args = {},
+                    items = str.length ? str.split("&") : [],
+                    item = null,
+                    name = null,
+                    value = null;
+                    for (i=0; i < items.length; i++){
+                        item = items[i].split("=");
+                        name = decodeURIComponent(item[0]);
+                        value = decodeURIComponent(item[1]);
+                        if (name.length) {
+                            args[name] = value;
+                        }
+                    }
+                    return args;
+                },
+    			getType: function(){
+    				var that = this;
+    				$.ajax({
+    					"url":"http://blog.com/api/blog/add",
+    					"type": "get",
+    					"dataType": "json",
+    					"data": {
+    						"user_id": window.localStorage.user_id
+    					},
+    					success: function(res){
+    						that.classList = res.data.classify_lists;
+    					},
+    					error: function(){
+    						alert("xxxx");
+    					}
+    				})
+    			},
+    			edit: function(){
+    				$.ajax({
+    					"url": "http://blog.com/api/blog/doEdit",
+    					"type": "post",
+    					"dataType": "json",
+    					"data": {
+    						"user_id": window.localStorage.user_id,
+    						"title": this.title,
+    						"content": this.getUeditorContent(),
+    						"classify_id": this.class_id,
+                            "blog_id": this.getQuery().id
+    					},
+    					success: function(res){
+    						if(res.error_code == 0){
+    							alert("发布成功");
+    						}else {
+    							alert(res.message);
+    						}
+    					}
+    				})
+    			},
+                updateBlog: function(item){
+                    var that = this;
+                    $.ajax({
+                        url: "http://blog.com/api/blog/add",
+                        type:"get",
+                        dataType: "json",
+                        data: {
+                            user_id: window.localStorage.user_id,
+                            blog_id: this.getQuery().id
+                        },
+                        success: function(res){
+                            if(res.error_code == 0){
+                                that.updateList = res.data.my_blog_info;
+                                that.title = res.data.my_blog_info.title
+                                // that.ue.setContent(that.updateList);
+                            }else {
+                                alert(res.message);
+                            }
+                        }
+                    })
+                },
+    		}
+    	})
+    </script>
+</body>
+</html>
